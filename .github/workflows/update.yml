@@ -1,32 +1,158 @@
-name: Update Fund Data
-
-on:
-  schedule:
-    # 鍖椾含鏃堕棿姣忓ぉ鏃╀笂 6:00 (UTC 22:00) 缇庤偂鏀剁洏鍚庢洿鏂?    - cron: "0 22 * * *"
-  workflow_dispatch:  # 鏀寔鎵嬪姩瑙﹀彂
-
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Run update script
-        run: python update_data.py
-
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
-          git diff --staged --quiet || git commit -m "data: auto update $(date +'%Y-%m-%d %H:%M UTC')"
-          git push
+2026-06-26 01:47:14.314 trollstorehelper[4087:228622] trollstorehelper invoked with arguments: (
+    install,
+    custom,
+    "/private/var/mobile/Containers/Data/Application/D1F10A5C-FCB1-4045-BC70-FCA7126C7F39/tmp/D53A75EF-FBFB-457A-820A-A9C38AFC2DA2/prod_5dc7960660b249d394c6925481b97486_Coco-\U65e0\U754f_0615_noauth.tipa"
+)
+2026-06-26 01:47:14.420 trollstorehelper[4087:228622] [installApp force = 0]
+2026-06-26 01:47:14.447 trollstorehelper[4087:228622] [dumpEntitlements] dumped {
+    "com.apple.AXMediaUtilitiesService-access" = 1;
+    "com.apple.DragUI.accessibility" = 1;
+    "com.apple.QuartzCore.displayable-context" = 1;
+    "com.apple.QuartzCore.secure-mode" = 1;
+    "com.apple.accessibility.api" = 1;
+    "com.apple.accessibility.physicalinteraction.client" = 1;
+    "com.apple.accessibility.zoom.client" = 1;
+    "com.apple.assistivetouch.daemon" = 1;
+    "com.apple.backboard.client" = 1;
+    "com.apple.backboardd.global-pointer-event-routing" = 1;
+    "com.apple.backboardd.launchapplications" = 1;
+    "com.apple.bluetooth.system" = 1;
+    "com.apple.carousel.backlightaccess" = 1;
+    "com.apple.coreaudio.allow-opus-codec" = 1;
+    "com.apple.coreaudio.register-internal-aus" = 1;
+    "com.apple.developer.icloud-container-identifiers" =     (
+    );
+    "com.apple.developer.icloud-services" =     (
+        CloudDocuments
+    );
+    "com.apple.developer.ubiquity-container-identifiers" =     (
+    );
+    "com.apple.developer.ubiquity-kvstore-identifier" = "$(TeamIdentifierPrefix)$(CFBundleIdentifier)";
+    "com.apple.diagnosticd.diagnostic" = 1;
+    "com.apple.frontboard.debugapplications" = 1;
+    "com.apple.hid.manager.user-access-device" = 1;
+    "com.apple.hid.manager.user-access-keyboard" = 1;
+    "com.apple.idle-timer-services" = 1;
+    "com.apple.managedconfiguration.profiled-access" = 1;
+    "com.apple.pointerui.persistentlyHidePointer" = 1;
+    "com.apple.private.CoreAuthentication.SPI" = 1;
+    "com.apple.private.LocalAuthentication.Storage" = 1;
+    "com.apple.private.MobileGestalt.AllowedProtectedKeys" =     (
+        UniqueDeviceID
+    );
+    "com.apple.private.acccessibility.motionTrackingClient" = 1;
+    "com.apple.private.appleaccount.app-hidden-from-icloud-settings" = 1;
+    "com.apple.private.applecredentialmanager.allow" = 1;
+    "com.apple.private.assets.accessible-asset-types" =     (
+        "com.apple.MobileAsset.VoiceServices.CustomVoice",
+        "com.apple.MobileAsset.VoiceServicesVocalizerVoice",
+        "com.apple.MobileAsset.VoiceServices.GryphonVoice",
+        "com.apple.MobileAsset.MacinTalkVoiceAssets",
+        "com.apple.MobileAsset.VoiceServices.CombinedVocalizerVoices"
+    );
+    "com.apple.private.avfoundation.capture.nonstandard-client.allow" = 1;
+    "com.apple.private.coreaudio.viewInterruptorName.allow" = 1;
+    "com.apple.private.hid.client.event-dispatch" = 1;
+    "com.apple.private.hid.client.event-filter" = 1;
+    "com.apple.private.hid.client.event-monitor" = 1;
+    "com.apple.private.hid.client.service-protected" = 1;
+    "com.apple.private.hid.manager.client" = 1;
+    "com.apple.private.ids.messaging" =     (
+        "com.apple.private.alloy.accessibility.switchcontrol"
+    );
+    "com.apple.private.ids.messaging.urgent-priority" =     (
+        "com.apple.private.alloy.accessibility.switchcontrol"
+    );
+    "com.apple.private.kernel.jetsam" = 1;
+    "com.apple.private.memorystatus" = 1;
+    "com.apple.private.persona-mgmt" = 1;
+    "com.apple.private.security.no-container" = 1;
+    "com.apple.private.security.no-sandbox" = 1;
+    "com.apple.private.security.storage.AppDataContainers" = 1;
+    "com.apple.private.sysdiagnose" = 1;
+    "com.apple.private.ubiquity-additional-kvstore-identifiers" =     (
+        "com.apple.AssistiveTouch",
+        "com.apple.Accessibility.SwitchControl",
+        "com.apple.Accessibility"
+    );
+    "com.apple.security.exception.mach-lookup.global-name" =     (
+        "com.apple.accessibility.motiontrackingd",
+        "com.apple.accessibility.AXSpringBoardServer",
+        "com.apple.accessibility.AXPineBoardServer",
+        "com.apple.accessibility.AXCarouselServer",
+        AXPerformanceTestReportingServer,
+        "com.apple.telephonyutilities.callservicesdaemon.callstatecontroller",
+        "com.apple.AXMediaUtilitiesService",
+        "com.apple.audio.hapticd",
+        AccessibilityDebuggerServices,
+        "com.apple.sysdiagnose.service.xpc",
+        "com.apple.TextInput",
+        "com.apple.SBUserNotification",
+        "com.apple.siri.activation.service",
+        "com.apple.commandandcontrol",
+        "com.apple.sharing.accessibility",
+        "com.apple.TextInput.accessibility",
+        "com.apple.appleneuralengine",
+        "com.apple.fontservicesd",
+        "com.apple.PointerUI.pointeruid.service"
+    );
+    "com.apple.security.exception.mach-lookup.local-name" =     (
+        "com.apple.AXMediaUtilitiesService"
+    );
+    "com.apple.security.exception.mach-register.global-name" =     (
+        "com.Laote.YuanBao.gsEvents"
+    );
+    "com.apple.security.exception.mach-register.local-name" =     (
+        "com.Laote.YuanBao"
+    );
+    "com.apple.security.exception.shared-preference.read-only" =     (
+        "com.apple.purplebuddy",
+        "com.apple.uikitservices.userInterfaceStyleMode"
+    );
+    "com.apple.security.exception.shared-preference.read-write" =     (
+        "com.apple.assistant.logging"
+    );
+    "com.apple.security.iokit-user-client-class" =     (
+        IOSurfaceRootUserClient,
+        AGXDeviceUserClient,
+        IOPMPowerSourceClient
+    );
+    "com.apple.security.system-groups" =     (
+        "systemgroup.com.apple.powerlog"
+    );
+    "com.apple.springboard-ui.client" = 1;
+    "com.apple.springboard.CFUserNotification" = 1;
+    "com.apple.springboard.accessibility-window-hosting" = 1;
+    "com.apple.springboard.activateassistant" = 1;
+    "com.apple.springboard.appbackgroundstyle" = 1;
+    "com.apple.springboard.launchapplications" = 1;
+    "com.apple.system-task-ports" = 1;
+    "com.apple.system.diagnostics.iokit-properties" = 1;
+    "file-read-data" = 1;
+    "get-task-allow" = 1;
+    "keychain-access-groups" =     (
+        "com.XingHe.AppLoad",
+        "$(AppIdentifierPrefix)com.XingHe.AppLoad"
+    );
+    "platform-application" = 1;
+    "run-unsigned-code" = 1;
+    "task_for_pid-allow" = 1;
+    "user-preference-read" = 1;
+    "user-preference-write" = 1;
+}
+2026-06-26 01:47:14.449 trollstorehelper[4087:228622] About to spawn ldid (/private/var/containers/Bundle/Application/2D0B11B5-70E3-4CB7-A435-B155056D501F/TrollStore.app/ldid) with args (
+    "-S/var/tmp/28165C8F-0007-4D5D-9B53-69EE5A5CF7B7.plist",
+    "/private/var/tmp/EF1124FF-9C43-46F3-BECA-09609A57DEE5/Payload/YuanBao.app/YuanBao"
+)
+2026-06-26 01:47:14.473 trollstorehelper[4087:228622] ldid exited with status 0
+2026-06-26 01:47:14.473 trollstorehelper[4087:228622] - ldid error output start -
+2026-06-26 01:47:14.473 trollstorehelper[4087:228622] - ldid error output end -
+2026-06-26 01:47:14.474 trollstorehelper[4087:228622] About to spawn ldid (/private/var/containers/Bundle/Application/2D0B11B5-70E3-4CB7-A435-B155056D501F/TrollStore.app/ldid) with args (
+    "-s",
+    "/var/tmp/EF1124FF-9C43-46F3-BECA-09609A57DEE5/Payload/YuanBao.app"
+)
+2026-06-26 01:47:14.483 trollstorehelper[4087:228622] ldid exited with status 1
+2026-06-26 01:47:14.483 trollstorehelper[4087:228622] - ldid error output start -
+2026-06-26 01:47:14.483 trollstorehelper[4087:228622] ldid.cpp(2703): _assert(): DiskFolder::Open(/var/tmp/EF1124FF-9C43-46F3-BECA-09609A57DEE5/Payload/YuanBao.app/Frameworks/badRecovery.framework/badRecovery)
+2026-06-26 01:47:14.483 trollstorehelper[4087:228622] - ldid error output end -
+2026-06-26 01:47:14.488 trollstorehelper[4087:228622] trollstorehelper returning 175
