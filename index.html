@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>美股基金涨跌助手</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="header">
+    <button class="btn-back" onclick="history.back()">←</button>
+    <h1 class="title">美股基金涨跌助手</h1>
+    <button class="btn-refresh" onclick="refreshData()">⟳</button>
+  </header>
+  <div class="update-time" id="updateTime">数据加载中...</div>
+  <div class="index-cards">
+    <div class="index-card" id="card-nasdaq">
+      <div class="index-name">纳斯达克</div>
+      <div class="index-value" id="val-nasdaq">--</div>
+      <div class="index-label">已收盘</div>
+    </div>
+    <div class="index-card" id="card-sp500">
+      <div class="index-name">标普500</div>
+      <div class="index-value" id="val-sp500">--</div>
+      <div class="index-label">已收盘</div>
+    </div>
+    <div class="index-card" id="card-dji">
+      <div class="index-name">道琼斯</div>
+      <div class="index-value" id="val-dji">--</div>
+      <div class="index-label">已收盘</div>
+    </div>
+    <div class="index-card" id="card-fx">
+      <div class="index-name">汇率</div>
+      <div class="index-value" id="val-fx">--</div>
+    </div>
+  </div>
+  <div class="sort-bar">
+    <span class="sort-status">已收盘</span>
+    <button class="sort-btn" id="sortBtn" onclick="toggleSort()">
+      参考涨跌 <span id="sortArrow">↓</span>
+    </button>
+  </div>
+  <div class="fund-list" id="fundList"></div>
+  <div class="footer-note">
+    数据来源：天天基金 / 东方财富 ｜ 仅供参考，不构成投资建议
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
